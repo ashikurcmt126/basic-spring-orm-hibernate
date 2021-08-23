@@ -36,7 +36,16 @@ public class App {
                 switch (input){
                     case 1:
                         //add a new student
-                        Student student = new Student(103, "Ashikur Rahman", "Dhaka");
+                        System.out.println("Enter user id: ");
+                        int uId = Integer.parseInt(bufferedReader.readLine());
+
+                        System.out.println("Enter user name: ");
+                        String uName = bufferedReader.readLine();
+
+                        System.out.println("Enter user city: ");
+                        String uCity = bufferedReader.readLine();
+
+                        Student student = new Student(uId, uName, uCity);
                         int result = studentDao.insert(student);
                         System.out.println("Done "+result);
                         break;
