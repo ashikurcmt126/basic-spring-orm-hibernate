@@ -14,27 +14,46 @@ public class StudentDao {
     @Transactional          //write operation enable
     public int insert(Student student){
         // Insert
-        Integer i = (Integer) this.hibernateTemplate.save(student);
-        return i;
+        try {
+            Integer i = (Integer) this.hibernateTemplate.save(student);
+            return i;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return 0;
     }
 
     // Get the single data(object)
     @Transactional
     public Student getStudent(int studentId){
-        Student student = this.hibernateTemplate.get(Student.class, studentId);
-        return student;
+        try{
+            Student student = this.hibernateTemplate.get(Student.class, studentId);
+            return student;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     public List<Student> getAllStudent(){
-        List<Student> students = this.hibernateTemplate.loadAll(Student.class);
-        return students;
+        try{
+            List<Student> students = this.hibernateTemplate.loadAll(Student.class);
+            return students;
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+       return null;
     }
 
     //deleting the data
     @Transactional
     public void deleteStudent(int studentId){
-        Student student = this.hibernateTemplate.get(Student.class, studentId);
-        this.hibernateTemplate.delete(student);
+        try{
+            Student student = this.hibernateTemplate.get(Student.class, studentId);
+            this.hibernateTemplate.delete(student);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     //updating data

@@ -83,7 +83,5 @@ public class App {
             }
         }
         System.out.println("Thank you for using my application.. ");
-
-
     }
 }
